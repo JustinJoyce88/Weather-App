@@ -1,3 +1,5 @@
+"use strict";
+
 $(() => {
   //   If user accepts location data, get coordinated and create url with API.
   if (navigator.geolocation) {
@@ -11,8 +13,7 @@ $(() => {
   }
 });
 
-let getData = data => {
-  let measurement = " °F";
+const getData = data => {
   $(".weather-icon").attr("src", data.weather[0].icon);
   $(".location").html(data.name);
   $(".desc").html(data.weather[0].main);
@@ -29,8 +30,8 @@ let getData = data => {
 
   //Switch from F to C
   $(".temp-switch").on("click", function() {
-    let c = $("button:contains(°F)");
-    let f = $("button:contains(°C)");
+    const c = $("button:contains(°F)");
+    const f = $("button:contains(°C)");
     if (f.length) {
       $(".temp").html(Math.round(data.main.temp * 10) / 10 + " °C");
       f.html(`Switch to °F`);
